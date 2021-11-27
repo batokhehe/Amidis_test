@@ -71,6 +71,8 @@ class UsersAndNotesSeeder extends Seeder
         /*  insert users   */
         $user = User::create([ 
             'name' => 'admin',
+            'nik' => '0001.12345.678',
+            'departemen' => 'Umum',
             'email' => 'admin@admin.com',
             'email_verified_at' => now(),
             'password' => '$2y$10$92IXUNpkjO0rOQ5byMi.Ye4oKoEa3Ro9llC/.og/at2.uheWG/igi', // password
@@ -83,6 +85,8 @@ class UsersAndNotesSeeder extends Seeder
         for($i = 0; $i<$numberOfUsers; $i++){
             $user = User::create([
                 'name' => $faker->name(),
+                'nik' => $faker->unique()->numerify('####.#####.###'),
+                'departemen' => 'Umum',
                 'email' => $faker->unique()->safeEmail(),
                 'email_verified_at' => now(),
                 'password' => '$2y$10$92IXUNpkjO0rOQ5byMi.Ye4oKoEa3Ro9llC/.og/at2.uheWG/igi', // password

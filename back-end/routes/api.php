@@ -35,6 +35,9 @@ Route::group(['middleware' => 'api'], function ($router) {
 
         Route::resource('users', 'UsersController')->except( ['create', 'store'] );
 
+        Route::resource('permintaanBarang', 'PermintaanBarangController');
+        Route::resource('barang', 'BarangController');
+
         Route::prefix('menu/menu')->group(function () { 
             Route::get('/',         'MenuEditController@index')->name('menu.menu.index');
             Route::get('/create',   'MenuEditController@create')->name('menu.menu.create');

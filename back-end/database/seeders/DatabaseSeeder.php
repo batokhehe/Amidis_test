@@ -25,6 +25,7 @@ class DatabaseSeeder extends Seeder
         $this->call('EmailSeeder');
         */
         $this->call([
+            BarangSeeder::class,
             UsersAndNotesSeeder::class,
             MenusTableSeeder::class,
             FolderTableSeeder::class,

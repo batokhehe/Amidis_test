@@ -58,6 +58,12 @@ const Users = () => import('@/views/users/Users')
 const User = () => import('@/views/users/User')
 const EditUser = () => import('@/views/users/EditUser')
 
+//Permintaan Barang
+const Index_PermintaanBarang = () => import('@/views/permintaanBarang/Index')
+const Show_PermintaanBarang = () => import('@/views/permintaanBarang/Show')
+const Edit_PermintaanBarang = () => import('@/views/permintaanBarang/Edit')
+const Create_PermintaanBarang = () => import('@/views/permintaanBarang/Create')
+
 //Notes
 const Notes = () => import('@/views/notes/Notes')
 const Note = () => import('@/views/notes/Note')
@@ -364,6 +370,49 @@ function configRoutes () {
               meta: { label: 'Edit Note' },
               name: 'Edit Note',
               component: EditNote,
+              meta:{
+                requiresUser: true
+              }
+            },
+          ]
+        },
+        {
+          path: 'permintaanBarang',
+          meta: { label: 'Permintaan Barang'},
+          component: {
+            render (c) { return c('router-view') }
+          },
+          children: [
+            {
+              path: '',
+              component: Index_PermintaanBarang,
+              meta:{
+                requiresUser: true
+              }
+            },
+            {
+              path: 'create',
+              meta: { label: 'Create Permintaan Barang' },
+              name: 'Create Permintaan Barang',
+              component: Create_PermintaanBarang,
+              meta:{
+                requiresUser: true
+              }
+            },
+            {
+              path: ':id',
+              meta: { label: 'Permintaan Barang Details'},
+              name: 'Permintaan Barang',
+              component: Show_PermintaanBarang,
+              meta:{
+                requiresUser: true
+              }
+            },
+            {
+              path: ':id/edit',
+              meta: { label: 'Edit Permintaan Barang' },
+              name: 'Edit Permintaan Barang',
+              component: Edit_PermintaanBarang,
               meta:{
                 requiresUser: true
               }

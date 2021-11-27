@@ -28,7 +28,7 @@ class UsersController extends Controller
     {
         $you = auth()->user()->id;
         $users = DB::table('users')
-        ->select('users.id', 'users.name', 'users.email', 'users.menuroles as roles', 'users.status', 'users.email_verified_at as registered')
+        ->select('users.id', 'users.name', 'users.nik', 'users.nik as label', 'users.nik as value', 'users.email', 'users.menuroles as roles', 'users.status', 'users.email_verified_at as registered')
         ->whereNull('deleted_at')
         ->get();
         return response()->json( compact('users', 'you') );
@@ -43,8 +43,9 @@ class UsersController extends Controller
     public function show($id)
     {
         $user = DB::table('users')
-        ->select('users.id', 'users.name', 'users.email', 'users.menuroles as roles', 'users.status', 'users.email_verified_at as registered')
+        ->select('users.id', 'users.nik', 'users.departemen', 'users.name', 'users.email', 'users.menuroles as roles', 'users.status', 'users.email_verified_at as registered')
         ->where('users.id', '=', $id)
+        ->orWhere('users.nik', '=', $id)
         ->first();
         return response()->json( $user );
     }
